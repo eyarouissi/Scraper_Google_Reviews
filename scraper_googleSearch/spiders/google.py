@@ -13,7 +13,6 @@ class GoogleSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = [ "https://www.google.com/search?q=aspria+berlin+ku%27damm&oq=aspria+berlin+ku%27damm&aqs=chrome.0.0i355i512j46i175i199i512j69i59j0i30i625l6.3380j0j7&sourceid=chrome&ie=UTF-8#lrd=0x47a850c4b634ef93:0x2faf0f02eacd864e,1,,,,"
-            #"https://www.google.com/search?q=concord+honda&oq=conc&aqs=chrome.0.69i59j69i60l3j69i57j0l2.788j0j7&sourceid=chrome&ie=UTF-8#lrd=0x808566dd35d0d82b:0x3bca18b3f8745548,1,,,"
         ]
 
         for url in urls:
@@ -48,7 +47,7 @@ class GoogleSpider(scrapy.Spider):
             reviewer = review.css('div.TSUbDb.w6Pmwe a::text').extract_first()
             review_content = review.css('div.review-full-text span::text').extract_first()
             link = review.css('div.TSUbDb a::attr(href)').extract_first()
-            owner_response= str(review.css('div.lororc span::text').extract_first()).replace("(تمت الترجمة بواسطة Google.)","")
+            owner_response= str(review.css('div.lororc span::text').extract_first())
             owner_responded = False
             if len(owner_response) > 0 :
                 owner_responded = True
@@ -62,11 +61,11 @@ class GoogleSpider(scrapy.Spider):
             review_date = review.xpath('.//span[@class="Qhbkge"]/text()').extract_first()
             yield {
 
-               # "Reviewer Name" : reviewer,
-                #"Review content" : review_content,
-               # "Full review link":link,
-                #"Rating" : review_rating,
-                #"Review Time Information":review_date,
+                "Reviewer Name" : reviewer,
+                "Review content" : review_content,
+                "Full review link":link,
+                "Rating" : review_rating,
+                "Review Time Information":review_date,
                 "shop owner reply": owner_responded,
                 "shop owner text": owner_response
    
