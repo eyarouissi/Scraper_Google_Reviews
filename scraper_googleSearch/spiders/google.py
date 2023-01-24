@@ -48,6 +48,7 @@ class GoogleSpider(scrapy.Spider):
             review_content = review.css('div.review-full-text span::text').extract_first()
             link = review.css('div.TSUbDb a::attr(href)').extract_first()
             owner_response= str(review.css('div.lororc span::text').extract_first())
+            owner_answer_date = review.css('div.LfKETd span::text').extract_first()
             owner_responded = False
             if len(owner_response) > 0 :
                 owner_responded = True
@@ -67,6 +68,7 @@ class GoogleSpider(scrapy.Spider):
                 "Rating" : review_rating,
                 "Review Time Information":review_date,
                 "shop owner reply": owner_responded,
-                "shop owner text": owner_response
+                "shop owner text": owner_response,
+                "shop owner answer time": owner_answer_date
    
             }
