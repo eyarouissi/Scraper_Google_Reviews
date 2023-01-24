@@ -1,11 +1,10 @@
 # Scraper_Google_Reviews
 
-A scraper that scrapes reviews from google reviews
+A scraper that scrapes reviews on shops from google reviews
 
 ## Features
 
-+ Python FastAPI backend.
-+ MongoDB database.
++ Python script.
 
 
 ```console
@@ -14,7 +13,7 @@ pip3 install -r requirements.txt
 
 To run the starter:
 
-First, unstall package `scrapy`:
+First, you need to install package `scrapy`:
 
 ```console
 pip install scrapy
