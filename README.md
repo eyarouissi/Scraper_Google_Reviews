@@ -7,9 +7,6 @@ A scraper that scrapes reviews on shops from google reviews
 + Python script.
 
 
-```console
-pip3 install -r requirements.txt
-```
 
 To run the starter:
 
